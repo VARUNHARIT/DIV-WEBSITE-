@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-div-obsidian: #080807;
+  --color-div-surface: #11110e;
+  --color-div-surface-2: #171612;
+  --color-div-cream: #f8ecab;
+  --color-div-cream-soft: #efe3a2;
+  --color-div-gold: #dab24c;
+  --color-div-gold-hover: #e5c05e;
+  --color-div-ink: #0d0d0b;
+  --color-div-muted: #9e967c;
+}
+
+@layer base {
+  html {
+    background-color: #080807;
+    color: #f5eccd;
+    font-family: var(--font-sans);
+    scroll-behavior: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #080807;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom hairline scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080807;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b271a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dab24c;
+}
+
+/* 3D spatial perspective utilities */
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes div-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-div-marquee {
+  display: flex;
+  width: max-content;
+  animation: div-marquee 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-div-marquee {
+    animation: none;
+  }
+}
