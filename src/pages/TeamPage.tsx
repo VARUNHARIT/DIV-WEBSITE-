@@ -43,11 +43,22 @@ export function TeamPage() {
             {LEADERSHIP_TEAM.map((person, idx) => (
               <ScrollStaggerItem key={person.index} index={idx}>
                 <article className="group">
-                  <div className="flex aspect-square items-center justify-center rounded-xl bg-[#0A0A08] p-6 transition-transform duration-200 group-hover:-translate-y-1">
-                    <p className="font-mono text-xs tracking-[0.12em] text-[#DAB24C]/80 uppercase">
-                      PORTRAIT TO BE ADDED
-                    </p>
-                  </div>
+                 <div className="flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-[#0A0A08] transition-transform duration-200 group-hover:-translate-y-1">
+
+                {person.image ? (
+                   <img
+                    src={person.image}
+                    alt={person.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                      ) : (
+                      <p className="font-mono text-xs tracking-[0.12em] text-[#DAB24C]/80 uppercase">
+                             PORTRAIT TO BE ADDED
+                      </p>
+                   )}
+
+          </div>
                   <h2 className="mt-5 font-display text-2xl font-bold text-[#0D0D0B]">
                     {person.role}
                   </h2>
@@ -55,25 +66,34 @@ export function TeamPage() {
                   <p className="mt-0.5 text-xs text-[#5B5237]">
                     {person.affiliation}
                   </p>
-                  <div className="mt-4 flex items-center gap-4 text-xs font-medium text-[#2C281E]">
-                    <button
-                      type="button"
-                      onClick={() => navigate('/contact')}
-                      className="hover:underline"
-                    >
-                      LinkedIn ↗
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => navigate('/contact')}
-                      className="hover:underline"
-                    >
-                      Email ↗
-                    </button>
-                  </div>
-                </article>
-              </ScrollStaggerItem>
-            ))}
+                  {/* Individual Social Links */}
+        <div className="mt-4 flex items-center gap-4 text-xs font-medium text-[#2C281E]">
+
+          {person.linkedin && (
+            <a
+              href={person.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-[#B28A25] hover:underline"
+            >
+              LinkedIn ↗
+            </a>
+          )}
+
+          {person.email && (
+            <a
+              href={`mailto:${person.email}`}
+              className="transition-colors hover:text-[#B28A25] hover:underline"
+            >
+              Email ↗
+            </a>
+          )}
+
+        </div>
+      </article>
+    </ScrollStaggerItem>
+  ))}
+           
           </div>
 
           <ScrollReveal3D delay={0.1}>
