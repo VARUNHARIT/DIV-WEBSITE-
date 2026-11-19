@@ -116,6 +116,9 @@ export interface TeamLeader {
   role: string;
   name: string;
   affiliation: string;
+  image?: string;
+  linkedin?: string;
+  email?: string;
 }
 
 export interface DemoStudentRecord {
